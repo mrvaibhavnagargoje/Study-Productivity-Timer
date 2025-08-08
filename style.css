@@ -1,0 +1,407 @@
+* {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --hue: 223;
+    --bg: hsl(var(--hue), 90%, 90%);
+    --fg: hsl(var(--hue), 10%, 10%);
+    --primary: hsl(var(--hue), 90%, 55%);
+    --success: hsl(120, 70%, 50%);
+    --warning: hsl(30, 90%, 55%);
+    --danger: hsl(0, 70%, 50%);
+    --trans-dur: 0.3s;
+    font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font: 1em/1.5 "DM Sans", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition:
+        background-color var(--trans-dur),
+        color var(--trans-dur);
+}
+
+.timer-container {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 1rem;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.controls {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+input[type="number"] {
+    padding: 0.8rem;
+    border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    font-size: 1.2em;
+    width: 80px;
+    text-align: center;
+    background: transparent;
+    color: var(--fg);
+    transition: all var(--trans-dur);
+}
+
+input[type="number"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px hsla(var(--hue), 90%, 50%, 0.3);
+    transform: scale(1.05);
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--trans-dur);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-warning {
+    background: var(--warning);
+    color: white;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.clock {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.clock__block {
+    background-color: hsl(var(--hue), 10%, 90%);
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem hsla(var(--hue), 90%, 50%, 0.3);
+    font-size: 2.5em;
+    line-height: 2;
+    margin: 0.75rem;
+    overflow: hidden;
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
+    transition: all var(--trans-dur);
+}
+
+.clock__block--small {
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 2rem hsla(var(--hue), 90%, 50%, 0.3);
+    font-size: 1em;
+    line-height: 3;
+    width: 3rem;
+    height: 3rem;
+}
+
+.clock__colon {
+    display: none;
+    font-size: 2em;
+    opacity: 0.5;
+    position: relative;
+    animation: blink 1s infinite;
+}
+
+.clock__colon:before,
+.clock__colon:after {
+    background-color: currentColor;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.05em;
+    left: -0.05em;
+    width: 0.1em;
+    height: 0.1em;
+    transition: background-color var(--trans-dur);
+}
+
+.clock__colon:before {
+    transform: translateY(-200%);
+}
+
+.clock__colon:after {
+    transform: translateY(200%);
+}
+
+.clock__digit-group {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.clock__digits {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock__block--bounce {
+    animation: bounce 0.75s;
+}
+
+.clock__block--bounce .clock__digit-group {
+    animation: roll 0.75s ease-in-out forwards;
+    transform: translateY(-50%);
+}
+
+.status {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all var(--trans-dur);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.status--running {
+    background: hsla(120, 70%, 50%, 0.1);
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.status--paused {
+    background: hsla(30, 90%, 55%, 0.1);
+    color: var(--warning);
+    border: 2px solid var(--warning);
+}
+
+.status--finished {
+    background: hsla(0, 70%, 50%, 0.1);
+    color: var(--danger);
+    border: 2px solid var(--danger);
+    animation: pulse 1s infinite;
+}
+
+.progress-container {
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: hsl(var(--hue), 10%, 85%);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success), var(--primary));
+    transition: width 0.5s ease;
+    border-radius: 10px;
+}
+
+.preset-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.preset-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all var(--trans-dur);
+    font-size: 0.9em;
+}
+
+.preset-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: hsl(var(--hue), 10%, 10%);
+        --fg: hsl(var(--hue), 10%, 90%);
+    }
+
+    .clock__block {
+        background-color: hsl(var(--hue), 90%, 40%);
+        box-shadow: 0 1rem 2rem hsla(var(--hue), 90%, 60%, 0.4);
+    }
+
+    .clock__block--small {
+        box-shadow: 0 0.5rem 2rem hsla(var(--hue), 90%, 60%, 0.4);
+    }
+}
+
+/* Desktop responsive */
+@media (min-width: 768px) {
+    .clock {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .clock__colon {
+        display: inherit;
+    }
+
+    .controls {
+        flex-wrap: nowrap;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    input[type="number"] {
+        width: 100px;
+    }
+
+    .preset-buttons {
+        justify-content: space-between;
+        gap: 0.8rem;
+    }
+
+    .preset-btn {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .clock__block {
+        width: 6rem;
+        height: 6rem;
+        font-size: 3em;
+    }
+}
+
+/* Animations */
+@keyframes bounce {
+
+    from,
+    to {
+        animation-timing-function: ease-in;
+        transform: translateY(0);
+    }
+
+    50% {
+        animation-timing-function: ease-out;
+        transform: translateY(15%);
+    }
+}
+
+@keyframes roll {
+    from {
+        transform: translateY(-50%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

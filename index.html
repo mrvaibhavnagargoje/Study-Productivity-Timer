@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="timer-container">
+        <h1 class="title">📚 Study Timer</h1>
+
+        <div class="preset-buttons">
+            <button class="preset-btn" onclick="setPreset(0, 0, 30)">30 Second Test</button>
+            <button class="preset-btn" onclick="setPreset(0, 25, 0)">Pomodoro (25 min)</button>
+            <button class="preset-btn" onclick="setPreset(1, 0, 0)">1 Hour</button>
+            <button class="preset-btn" onclick="setPreset(2, 0, 0)">2 Hours</button>
+            <button class="preset-btn" onclick="setPreset(4, 0, 0)">4 Hours</button>
+            <button class="preset-btn" onclick="setPreset(8, 0, 0)">8 Hours</button>
+        </div>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="hours">Hours</label>
+                <input type="number" id="hours" min="0" max="23" value="0">
+            </div>
+            <div class="input-group">
+                <label for="minutes">Minutes</label>
+                <input type="number" id="minutes" min="0" max="59" value="25">
+            </div>
+            <div class="input-group">
+                <label for="seconds">Seconds</label>
+                <input type="number" id="seconds" min="0" max="59" value="0">
+            </div>
+            <button class="btn btn-primary" onclick="startTimer()">Start</button>
+            <button class="btn btn-warning" onclick="pauseTimer()">Pause</button>
+            <button class="btn btn-danger" onclick="resetTimer()">Reset</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="status" id="status">Timer Ready - Set your study time!</div>
+
+        <div class="clock" aria-label="00:00:00">
+            <div class="clock__block" aria-hidden="true" data-time-group>
+                <div class="clock__digit-group">
+                    <div class="clock__digits" data-time="a">00</div>
+                    <div class="clock__digits" data-time="b">00</div>
+                </div>
+            </div>
+            <div class="clock__colon"></div>
+            <div class="clock__block" aria-hidden="true" data-time-group>
+                <div class="clock__digit-group">
+                    <div class="clock__digits" data-time="a">00</div>
+                    <div class="clock__digits" data-time="b">00</div>
+                </div>
+            </div>
+            <div class="clock__colon"></div>
+            <div class="clock__block" aria-hidden="true" data-time-group>
+                <div class="clock__digit-group">
+                    <div class="clock__digits" data-time="a">00</div>
+                    <div class="clock__digits" data-time="b">00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
