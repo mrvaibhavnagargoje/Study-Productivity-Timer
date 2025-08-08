@@ -40,8 +40,8 @@ body {
 }
 
 .title {
-    font-size: 2.5em;
-    margin-bottom: 2rem;
+    font-size: 2em;
+    margin-bottom: 1.5rem;
     font-weight: bold;
     background: linear-gradient(45deg, var(--primary), var(--success));
     -webkit-background-clip: text;
@@ -89,7 +89,7 @@ input[type="number"]:focus {
 }
 
 .btn {
-    padding: 1rem 2rem;
+    padding: 0.7rem 2rem;
     border: none;
     border-radius: 0.5rem;
     font-size: 1.2em;
@@ -137,8 +137,8 @@ input[type="number"]:focus {
 
 .clock {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
     align-items: center;
     margin: 2rem 0;
 }
@@ -219,7 +219,7 @@ input[type="number"]:focus {
 }
 
 .status {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: bold;
     margin: 1rem auto;
     padding: 1rem;
@@ -276,7 +276,7 @@ input[type="number"]:focus {
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 .preset-btn {
