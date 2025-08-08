@@ -7,12 +7,12 @@
 
 :root {
     --hue: 223;
-    --bg: hsl(var(--hue), 90%, 90%);
-    --fg: hsl(var(--hue), 10%, 10%);
-    --primary: hsl(var(--hue), 90%, 55%);
-    --success: hsl(120, 70%, 50%);
-    --warning: hsl(30, 90%, 55%);
-    --danger: hsl(0, 70%, 50%);
+    --bg: hsl(var(--hue),90%,90%);
+    --fg: hsl(var(--hue),10%,10%);
+    --primary: hsl(var(--hue),90%,55%);
+    --success: hsl(120,70%,50%);
+    --warning: hsl(30,90%,55%);
+    --danger: hsl(0,70%,50%);
     --trans-dur: 0.3s;
     font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
 }
@@ -41,7 +41,7 @@ body {
 
 .title {
     font-size: 2em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-weight: bold;
     background: linear-gradient(45deg, var(--primary), var(--success));
     -webkit-background-clip: text;
@@ -84,12 +84,12 @@ input[type="number"] {
 
 input[type="number"]:focus {
     outline: none;
-    box-shadow: 0 0 0 3px hsla(var(--hue), 90%, 50%, 0.3);
+    box-shadow: 0 0 0 3px hsla(var(--hue),90%,50%,0.3);
     transform: scale(1.05);
 }
 
 .btn {
-    padding: 0.7rem 2rem;
+    padding: 1rem 2rem;
     border: none;
     border-radius: 0.5rem;
     font-size: 1.2em;
@@ -122,7 +122,7 @@ input[type="number"]:focus {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .btn:active {
@@ -137,16 +137,16 @@ input[type="number"]:focus {
 
 .clock {
     display: flex;
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
+    /* flex-direction: column;
+    flex-wrap: wrap; */
     align-items: center;
     margin: 2rem 0;
 }
 
 .clock__block {
-    background-color: hsl(var(--hue), 10%, 90%);
+    background-color: hsl(var(--hue),10%,90%);
     border-radius: 0.5rem;
-    box-shadow: 0 1rem 2rem hsla(var(--hue), 90%, 50%, 0.3);
+    box-shadow: 0 1rem 2rem hsla(var(--hue),90%,50%,0.3);
     font-size: 2.5em;
     line-height: 2;
     margin: 0.75rem;
@@ -159,7 +159,7 @@ input[type="number"]:focus {
 
 .clock__block--small {
     border-radius: 0.25rem;
-    box-shadow: 0 0.5rem 2rem hsla(var(--hue), 90%, 50%, 0.3);
+    box-shadow: 0 0.5rem 2rem hsla(var(--hue),90%,50%,0.3);
     font-size: 1em;
     line-height: 3;
     width: 3rem;
@@ -219,7 +219,7 @@ input[type="number"]:focus {
 }
 
 .status {
-    font-size: 1em;
+    font-size: 1.5em;
     font-weight: bold;
     margin: 1rem auto;
     padding: 1rem;
@@ -231,19 +231,19 @@ input[type="number"]:focus {
 }
 
 .status--running {
-    background: hsla(120, 70%, 50%, 0.1);
+    background: hsla(120,70%,50%,0.1);
     color: var(--success);
     border: 2px solid var(--success);
 }
 
 .status--paused {
-    background: hsla(30, 90%, 55%, 0.1);
+    background: hsla(30,90%,55%,0.1);
     color: var(--warning);
     border: 2px solid var(--warning);
 }
 
 .status--finished {
-    background: hsla(0, 70%, 50%, 0.1);
+    background: hsla(0,70%,50%,0.1);
     color: var(--danger);
     border: 2px solid var(--danger);
     animation: pulse 1s infinite;
@@ -258,7 +258,7 @@ input[type="number"]:focus {
 .progress-bar {
     width: 100%;
     height: 20px;
-    background: hsl(var(--hue), 10%, 85%);
+    background: hsl(var(--hue),10%,85%);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
@@ -276,7 +276,7 @@ input[type="number"]:focus {
     flex-wrap: wrap;
     gap: 0.5rem;
     justify-content: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 .preset-btn {
@@ -298,17 +298,15 @@ input[type="number"]:focus {
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: hsl(var(--hue), 10%, 10%);
-        --fg: hsl(var(--hue), 10%, 90%);
+        --bg: hsl(var(--hue),10%,10%);
+        --fg: hsl(var(--hue),10%,90%);
     }
-
     .clock__block {
-        background-color: hsl(var(--hue), 90%, 40%);
-        box-shadow: 0 1rem 2rem hsla(var(--hue), 90%, 60%, 0.4);
+        background-color: hsl(var(--hue),90%,40%);
+        box-shadow: 0 1rem 2rem hsla(var(--hue),90%,60%,0.4);
     }
-
     .clock__block--small {
-        box-shadow: 0 0.5rem 2rem hsla(var(--hue), 90%, 60%, 0.4);
+        box-shadow: 0 0.5rem 2rem hsla(var(--hue),90%,60%,0.4);
     }
 }
 
@@ -318,28 +316,22 @@ input[type="number"]:focus {
         flex-direction: row;
         justify-content: center;
     }
-
     .clock__colon {
         display: inherit;
     }
-
     .controls {
         flex-wrap: nowrap;
     }
-
     .input-group {
         flex-direction: column;
     }
-
     input[type="number"] {
         width: 100px;
     }
-
     .preset-buttons {
         justify-content: space-between;
         gap: 0.8rem;
     }
-
     .preset-btn {
         flex: 1;
         text-align: center;
@@ -356,13 +348,10 @@ input[type="number"]:focus {
 
 /* Animations */
 @keyframes bounce {
-
-    from,
-    to {
+    from, to {
         animation-timing-function: ease-in;
         transform: translateY(0);
     }
-
     50% {
         animation-timing-function: ease-out;
         transform: translateY(15%);
@@ -373,35 +362,18 @@ input[type="number"]:focus {
     from {
         transform: translateY(-50%);
     }
-
     to {
         transform: translateY(0);
     }
 }
 
 @keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0.2;
-    }
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.2; }
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
